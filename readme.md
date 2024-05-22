@@ -14,7 +14,7 @@ Kasten don't need a very high storage performance for it's internal functionning
 
 ## install the NFS provisionner 
 
-Note : if you don't have a NFS server available you can create one on kubernetes itself check the [section](#create-a-nfs-sever-on-kubernetes-itself).
+Note : if you don't have a NFS server available you can create one on kubernetes itself check this [section](#create-a-nfs-sever-on-kubernetes-itself).
 
 
 Set up this two variables 
