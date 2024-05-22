@@ -64,7 +64,9 @@ If you lose this node then you'll have to :
 - reinstall kasten 
 - execute kasten disaster recovery 
 
-Having an external nfs share is preferable.
+It's why having an external nfs share is preferable but it not always possible.
+
+Let's create the nfs sever now, use `kubectl get node` to set up the variable `nodeName` :
 
 ```
 nodeName=<your node name>
@@ -139,8 +141,10 @@ NAME                                               READY   STATUS    RESTARTS   
 nfs-server-6b645cf6fd-ttv9b                        1/1     Running   0          4h49m
 ```
 
-Now you can set up the ip of the nfs server and your path will be simply "/"
+Now you can retreive the ip of the nfs server and your path will be simply "/"
 ```
 nfsIp=$(kubectl get svc -n nfs-storage nfs-server -o jsonpath='{.spec.clusterIP}')
 nfsPath="/"
 ```
+
+Now install the [nfs provisionner](#install-the-nfs-provisionner).
