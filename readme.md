@@ -53,7 +53,7 @@ But if you don't have it then you can create a nfs server directly on the cluste
 
 Using local storage is more complex has [we need to configure disk on the worker nodes](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/blob/master/docs/operations.md).
 
-We want something quick for this so let's use hostpath for our nfs server and use a node name to make sure this pod is alway scheduled on the same node. 
+We want something quick so let's use hostpath for our nfs server and use a node name to make sure this pod is alway scheduled on the same node. 
 
 If you lose this node then you'll have to : 
 - remove the nfs-provisioner (helm uninstall ...)
