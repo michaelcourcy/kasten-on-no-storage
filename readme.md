@@ -51,10 +51,20 @@ helm upgrade k10 kasten/k10 --create-namespace --install -n kasten-io \
 
 But if you don't have it then you can create a nfs server directly on the cluster using  hostpath or local storage. 
 
-Using local storage is more complex has [we need to configure disk on the worker nodes](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/blob/master/docs/operations.md) and let the local provisionner handle the creation of PV that PVC will bound later. 
+Using local storage is more complex has [we need to configure disk on the worker nodes](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner/blob/master/docs/operations.md).
 
-We want something quick for this so let's use hospath for our nfs server and use a node name to make sure this pod is alway scheduled on the same node. 
+We want something quick for this so let's use hostpath for our nfs server and use a node name to make sure this pod is alway scheduled on the same node. 
 
+If you lose this node then you'll have to : 
+- remove the nfs-provisioner (helm uninstall ...)
+- remove kasten (helm inisntall)
+- delete the nfs-server namespace
+- reinstall the nfs-server 
+- reinstall the nfs provisionner 
+- reinstall kasten 
+- execute kasten disaster recovery 
+
+Having an external nfs share is preferable.
 
 ```
 nodeName=<your node name>
